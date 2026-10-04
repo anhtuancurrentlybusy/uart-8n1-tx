@@ -1,0 +1,16 @@
+# Simulation
+*.vcd
+*.vvp
+*.fst
+
+# Simulation binaries
+sim/uart_sim
+sim/*.out
+
+# Logs
+*.log
+
+# Editor / OS
+.vscode/
+*.swp
+*~
