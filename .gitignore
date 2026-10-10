@@ -14,3 +14,7 @@ sim/*.out
 .vscode/
 *.swp
 *~
+
+# Generated simulation executables
+sim/uart_tx_sim
+sim/tb_uart_tx_sim
