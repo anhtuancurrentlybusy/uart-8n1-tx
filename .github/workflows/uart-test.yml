@@ -1,0 +1,28 @@
+name: UART 8N1 Testbench
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  simulation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Icarus Verilog
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y iverilog
+
+      - name: Compile UART testbench
+        run: |
+          iverilog -g2012 -s tb_uart_tx_top \
+            -o /tmp/uart_tx_sim \
+            rtl/*.sv tb/tb_uart_tx_top.sv
+
+      - name: Run UART simulation
+        run: vvp /tmp/uart_tx_sim
