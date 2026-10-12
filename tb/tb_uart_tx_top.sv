@@ -25,7 +25,6 @@ module tb_uart_tx_top;
 
     always #(CLK_PERIOD/2) clk = ~clk;
 
-    // Request one byte for one clock cycle.
     task automatic send(input logic [7:0] b);
         @(negedge clk);
         data_in = b;
@@ -35,7 +34,6 @@ module tb_uart_tx_top;
         valid_in = 1'b0;
     endtask
 
-    // Sample the signal near the middle of a bit.
     task automatic check_bit(input logic expected);
         repeat (CPB) @(posedge clk);
         #1;
@@ -45,8 +43,6 @@ module tb_uart_tx_top;
                 expected, tx, $time);
     endtask
 
-    // Called after send() has returned.
-    // Check START at its midpoint, then all data bits and STOP.
     task automatic check_frame(input logic [7:0] b);
         repeat (CPB/2) @(posedge clk);
         #1;
@@ -57,7 +53,7 @@ module tb_uart_tx_top;
             check_bit(b[i]);
         end
 
-        check_bit(1'b1); // STOP
+        check_bit(1'b1);
     endtask
 
     task automatic wait_tx_done;
@@ -72,41 +68,31 @@ module tb_uart_tx_top;
     endtask
 
     initial begin
-        // Initial reset
         repeat (2) @(negedge clk);
         rst_n = 1'b1;
 
-        // --------------------------------------------------
-        // TC02: 0x00
-        // --------------------------------------------------
+        // Case 1: Transmit 0x00
         send(8'h00);
-        assert (busy) else $fatal(1, "TC02: busy not asserted");
+        assert (busy) else $fatal(1, "Case 1: busy not asserted");
         check_frame(8'h00);
         check_busy_after_frame(8'h00);
-        $display("TC02 PASS: 0x00");
+        $display("Case 1 PASS: 0x00");
 
-        // --------------------------------------------------
-        // TC03: 0xFF
-        // --------------------------------------------------
+        // Case 2: Transmit 0xFF
         send(8'hFF);
-        assert (busy) else $fatal(1, "TC03: busy not asserted");
+        assert (busy) else $fatal(1, "Case 2: busy not asserted");
         check_frame(8'hFF);
         check_busy_after_frame(8'hFF);
-        $display("TC03 PASS: 0xFF");
+        $display("Case 2 PASS: 0xFF");
 
-        // --------------------------------------------------
-        // TC04: 0x55 (alternating bits / LSB first)
-        // --------------------------------------------------
+        // Case 3: Check alternating bits and LSB-first order
         send(8'h55);
-        assert (busy) else $fatal(1, "TC04: busy not asserted");
+        assert (busy) else $fatal(1, "Case 3: busy not asserted");
         check_frame(8'h55);
         check_busy_after_frame(8'h55);
-        $display("TC04 PASS: 0x55, LSB-first");
+        $display("Case 3 PASS: 0x55, LSB-first");
 
-
-        // --------------------------------------------------
-        // TC05: measure START bit duration
-        // --------------------------------------------------
+        // Case 4: Measure START bit duration
         @(negedge clk);
         data_in  = 8'h55;
         valid_in = 1'b1;
@@ -114,12 +100,9 @@ module tb_uart_tx_top;
         @(negedge clk);
         valid_in = 1'b0;
 
-        // Wait for the falling edge that marks START.
         @(negedge tx);
         t_start = $time;
 
-        // For 0x55, data bit 0 is 1, so this rising edge
-        // marks the end of START and the beginning of data.
         @(posedge tx);
         t_end = $time;
 
@@ -127,19 +110,14 @@ module tb_uart_tx_top;
 
         assert (measured_cycles == CPB)
             else $fatal(1,
-                "TC05 FAIL: START duration %0d clocks, expected %0d",
+                "Case 4 FAIL: START duration %0d clocks, expected %0d",
                 measured_cycles, CPB);
 
-        // Allow the current frame to finish before the next test.
         wait_tx_done();
-
-        $display("TC05 PASS: START duration = %0d clocks",
+        $display("Case 4 PASS: START duration = %0d clocks",
                  measured_cycles);
 
-
-        // --------------------------------------------------
-        // TC06: send two bytes consecutively
-        // --------------------------------------------------
+        // Case 5: Send two sequential bytes
         send(8'hA5);
         check_frame(8'hA5);
         check_busy_after_frame(8'hA5);
@@ -148,41 +126,27 @@ module tb_uart_tx_top;
         check_frame(8'h3C);
         check_busy_after_frame(8'h3C);
 
-        $display("TC06 PASS: two sequential bytes");
+        $display("Case 5 PASS: two sequential bytes");
 
-
-        // --------------------------------------------------
-        // TC07: Two requests separated by valid_in low
-        // --------------------------------------------------
-
-        // First request
+        // Case 6: Send two requests with valid_in low between them
         send(8'hA5);
         assert (busy)
-            else $fatal(1, "TC07: busy not asserted for first byte");
-
+            else $fatal(1, "Case 6: busy not asserted for first byte");
         check_frame(8'hA5);
         check_busy_after_frame(8'hA5);
 
-        // valid_in is low between requests.
         @(negedge clk);
         valid_in = 1'b0;
 
-        // Second request
         send(8'h3C);
         assert (busy)
-            else $fatal(1, "TC07: busy not asserted for second byte");
-
+            else $fatal(1, "Case 6: busy not asserted for second byte");
         check_frame(8'h3C);
         check_busy_after_frame(8'h3C);
 
-        $display("TC07 PASS: two requests with valid_in deasserted between them");
+        $display("Case 6 PASS: separate requests");
 
-
-
-        // --------------------------------------------------
-        // TC11: reset during an active frame.
-        // Expected rule A: abort, TX=1, busy=0.
-        // --------------------------------------------------
+        // Case 7: Reset during an active frame
         send(8'hA5);
         repeat (CPB) @(posedge clk);
 
@@ -192,10 +156,10 @@ module tb_uart_tx_top;
         #1;
 
         assert (tx === 1'b1)
-            else $fatal(1, "TC11 FAIL: TX not idle during reset");
+            else $fatal(1, "Case 7 FAIL: TX not idle during reset");
 
         assert (busy === 1'b0)
-            else $fatal(1, "TC11 FAIL: busy not cleared by reset");
+            else $fatal(1, "Case 7 FAIL: busy not cleared by reset");
 
         @(negedge clk);
         rst_n = 1'b1;
@@ -205,14 +169,14 @@ module tb_uart_tx_top;
         #1;
 
         assert (tx === 1'b1 && busy === 1'b0)
-            else $fatal(1, "TC11 FAIL: outputs incorrect after reset");
+            else $fatal(1, "Case 7 FAIL: outputs incorrect after reset");
 
-        $display("TC11 PASS: reset aborts frame");
+        $display("Case 7 PASS: reset aborts frame");
+
         $display("ALL TESTS PASS");
         $finish;
     end
 
-    // Global timeout prevents a hung simulation.
     initial begin
         #100000;
         $fatal(1, "TIMEOUT: simulation did not finish");
