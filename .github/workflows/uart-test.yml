@@ -25,6 +25,6 @@ jobs:
             rtl/*.sv tb/tb_uart_tx_top.sv
 
       - name: Run UART simulation
-        run:
+        run: |
               mkdir -p sim/waves
               vvp /tmp/uart_tx_sim
