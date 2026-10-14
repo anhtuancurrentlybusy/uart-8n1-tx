@@ -31,6 +31,17 @@ The project covers the basic design and verification process of a digital IC blo
 * **Group:** H – Serial Communication
 * **Design Level:** RTL
 * **Target:** Digital IC / ASIC design flow
+<<<<<<< HEAD
+## UART Waveforms
+
+### Complete UART frame
+![UART frame](reports/figures/uart_waveform_frame.png)
+
+### Waveform overview
+![UART overview](reports/figures/uart_waveform_overview.png)
+
+### Reset during transmission
+![UART reset check](reports/figures/uart_waveform_reset_check.png)
 ## UART Waveforms
 
 ### Complete UART frame
