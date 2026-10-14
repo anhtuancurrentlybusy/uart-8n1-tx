@@ -8,47 +8,26 @@ This project focuses on designing a **UART 8N1 transmitter** at the RTL level.
 
 The transmitter receives an 8-bit parallel data byte and serializes it into a UART frame consisting of:
 
-* 1 start bit
-* 8 data bits
-* 1 stop bit
+- 1 start bit
+- 8 data bits
+- 1 stop bit
 
 The project covers the basic design and verification process of a digital IC block, including RTL design, simulation, waveform verification, and RTL-to-GDSII flow.
 
 ## Interface
 
-| Signal       | Direction | Description          |
-| ------------ | --------- | -------------------- |
-| `ui_in[7:0]` | Input     | 8-bit data byte      |
-| `uio_in[0]`  | Input     | Transmission request |
-| `uo_out[0]`  | Output    | UART TX              |
-| `uo_out[1]`  | Output    | Busy status          |
-| `uo_out[2]`  | Output    | Done status          |
+| **Signal** | **Direction** | **Description** |
+|---|---|---|
+| `ui_in[7:0]` | Input | 8-bit data byte |
+| `uio_in[0]` | Input | Transmission request |
+| `uo_out[0]` | Output | UART TX |
+| `uo_out[1]` | Output | Busy status |
+| `uo_out[2]` | Output | Done status |
 
 ## Project Information
 
-* **Course:** EEE703128 – Introduction to Integrated Circuit Design
-* **Project:** UART 8N1 Transmitter
-* **Group:** H – Serial Communication
-* **Design Level:** RTL
-* **Target:** Digital IC / ASIC design flow
-<<<<<<< HEAD
-## UART Waveforms
-
-### Complete UART frame
-![UART frame](reports/figures/uart_waveform_frame.png)
-
-### Waveform overview
-![UART overview](reports/figures/uart_waveform_overview.png)
-
-### Reset during transmission
-![UART reset check](reports/figures/uart_waveform_reset_check.png)
-## UART Waveforms
-
-### Complete UART frame
-![UART frame](reports/figures/uart_waveform_frame.png)
-
-### Waveform overview
-![UART overview](reports/figures/uart_waveform_overview.png)
-
-### Reset during transmission
-![UART reset check](reports/figures/uart_waveform_reset_check.png)
+- **Course:** EEE703128 – Introduction to Integrated Circuit Design
+- **Project:** UART 8N1 Transmitter
+- **Group:** H – Serial Communication
+- **Design Level:** RTL
+- **Target:** Digital IC / ASIC design flow
