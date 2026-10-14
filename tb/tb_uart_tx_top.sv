@@ -68,6 +68,8 @@ module tb_uart_tx_top;
     endtask
 
     initial begin
+    $dumpfile("sim/waves/uart_tx.vcd");
+    $dumpvars(0, tb_uart_tx_top);
         repeat (2) @(negedge clk);
         rst_n = 1'b1;
 

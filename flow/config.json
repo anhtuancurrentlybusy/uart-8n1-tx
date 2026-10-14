@@ -1,0 +1,13 @@
+{
+  "DESIGN_NAME": "uart_tx_top",
+  "VERILOG_FILES": [
+    "dir::../rtl/uart_tx_top.sv",
+    "dir::../rtl/uart_tx_controller.sv",
+    "dir::../rtl/uart_tx_shift_register.sv",
+    "dir::../rtl/uart_baud_counter.sv",
+    "dir::../rtl/uart_bit_counter.sv"
+  ],
+  "CLOCK_PORT": "clk",
+  "CLOCK_PERIOD": 20,
+  "PDK": "sky130A"
+}

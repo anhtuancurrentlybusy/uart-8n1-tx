@@ -1,4 +1,7 @@
-# Simulation
+# OpenLane generated run data
+/flow/runs/
+
+/finish# Simulation
 *.vcd
 *.vvp
 *.fst
