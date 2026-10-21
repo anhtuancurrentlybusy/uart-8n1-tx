@@ -1,0 +1,15 @@
+OpenLane run: RUN_2026-10-20_09-04-44
+
+Magic DRC:
+[INFO] COUNT: 0
+
+KLayout DRC:
+Rules: 248
+Total violations: 0
+
+LVS:
+Final result: Circuits match uniquely.
+
+Antenna:
+[INFO ANT-0002] Found 0 net violations.
+[INFO ANT-0001] Found 0 pin violations.
