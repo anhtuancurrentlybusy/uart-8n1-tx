@@ -1,0 +1,10 @@
+VCD info: dumpfile sim/waves/uart_tx.vcd opened for output.
+Case 1 PASS: 0x00
+Case 2 PASS: 0xFF
+Case 3 PASS: 0x55, LSB-first
+Case 4 PASS: START duration = 4 clocks
+Case 5 PASS: two sequential bytes
+Case 6 PASS: separate requests
+Case 7 PASS: reset aborts frame
+ALL TESTS PASS
+tb/tb_uart_tx_top.sv:179: $finish called at 3406 (1s)
