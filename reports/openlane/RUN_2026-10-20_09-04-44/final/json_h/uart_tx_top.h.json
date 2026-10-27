@@ -1,0 +1,3233 @@
+{
+  "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+  "modules": {
+    "uart_tx_top": {
+      "attributes": {
+        "hdlname": "uart_tx_top",
+        "top": "00000000000000000000000000000001",
+        "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_top.sv:1.1-75.10"
+      },
+      "parameter_default_values": {
+        "CLKS_PER_BIT": "00000000000000000000000000010000"
+      },
+      "ports": {
+        "clk": {
+          "direction": "input",
+          "bits": [ 2 ]
+        },
+        "rst_n": {
+          "direction": "input",
+          "bits": [ 3 ]
+        },
+        "valid_in": {
+          "direction": "input",
+          "bits": [ 4 ]
+        },
+        "data_in": {
+          "direction": "input",
+          "bits": [ 5, 6, 7, 8, 9, 10, 11, 12 ]
+        },
+        "tx": {
+          "direction": "output",
+          "bits": [ 13 ]
+        },
+        "busy": {
+          "direction": "output",
+          "bits": [ 14 ]
+        }
+      },
+      "cells": {
+        "$flatten\\u_baud_counter.$add$/home/tuan/projects/uart-8n1-tx/rtl/uart_baud_counter.sv:24$15": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000100",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_baud_counter.sv:24.27-24.44"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 15, 16, 17, 18 ],
+            "B": [ "1" ],
+            "Y": [ 19, 20, 21, 22 ]
+          }
+        },
+        "$flatten\\u_baud_counter.$eq$/home/tuan/projects/uart-8n1-tx/rtl/uart_baud_counter.sv:16$11": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000100",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000100",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_baud_counter.sv:16.20-16.50"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 15, 16, 17, 18 ],
+            "B": [ "1", "1", "1", "1" ],
+            "Y": [ 23 ]
+          }
+        },
+        "$flatten\\u_baud_counter.$procdff$172": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "always_ff": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_baud_counter.sv:18.5-25.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 24, 25, 26, 27 ],
+            "Q": [ 15, 16, 17, 18 ]
+          }
+        },
+        "$flatten\\u_baud_counter.$procmux$162": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_baud_counter.sv:21.18-21.23|/home/tuan/projects/uart-8n1-tx/rtl/uart_baud_counter.sv:21.14-24.45"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 19, 20, 21, 22 ],
+            "B": [ "0", "0", "0", "0" ],
+            "S": [ 28 ],
+            "Y": [ 29, 30, 31, 32 ]
+          }
+        },
+        "$flatten\\u_baud_counter.$procmux$165": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_baud_counter.sv:19.13-19.19|/home/tuan/projects/uart-8n1-tx/rtl/uart_baud_counter.sv:19.9-24.45"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0", "0", "0", "0" ],
+            "B": [ 29, 30, 31, 32 ],
+            "S": [ 3 ],
+            "Y": [ 24, 25, 26, 27 ]
+          }
+        },
+        "$flatten\\u_bit_counter.$add$/home/tuan/projects/uart-8n1-tx/rtl/uart_bit_counter.sv:19$10": {
+          "hide_name": 1,
+          "type": "$add",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000100",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_bit_counter.sv:19.26-19.42"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 33, 34, 35, 36 ],
+            "B": [ "1" ],
+            "Y": [ 37, 38, 39, 40 ]
+          }
+        },
+        "$flatten\\u_bit_counter.$eq$/home/tuan/projects/uart-8n1-tx/rtl/uart_bit_counter.sv:11$7": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000100",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000100",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_bit_counter.sv:11.24-11.41"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 33, 34, 35, 36 ],
+            "B": [ "1", "1", "1", "0" ],
+            "Y": [ 41 ]
+          }
+        },
+        "$flatten\\u_bit_counter.$procdff$167": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "always_ff": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_bit_counter.sv:13.5-20.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 42, 43, 44, 45 ],
+            "Q": [ 33, 34, 35, 36 ]
+          }
+        },
+        "$flatten\\u_bit_counter.$procmux$16": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_bit_counter.sv:18.18-18.27|/home/tuan/projects/uart-8n1-tx/rtl/uart_bit_counter.sv:18.14-19.43"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 33, 34, 35, 36 ],
+            "B": [ 37, 38, 39, 40 ],
+            "S": [ 46 ],
+            "Y": [ 47, 48, 49, 50 ]
+          }
+        },
+        "$flatten\\u_bit_counter.$procmux$19": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_bit_counter.sv:16.18-16.23|/home/tuan/projects/uart-8n1-tx/rtl/uart_bit_counter.sv:16.14-19.43"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 47, 48, 49, 50 ],
+            "B": [ "0", "0", "0", "0" ],
+            "S": [ 51 ],
+            "Y": [ 52, 53, 54, 55 ]
+          }
+        },
+        "$flatten\\u_bit_counter.$procmux$22": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000100"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_bit_counter.sv:14.13-14.19|/home/tuan/projects/uart-8n1-tx/rtl/uart_bit_counter.sv:14.9-19.43"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0", "0", "0", "0" ],
+            "B": [ 52, 53, 54, 55 ],
+            "S": [ 3 ],
+            "Y": [ 42, 43, 44, 45 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procdff$169": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "always_ff": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:75.5-128.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 56 ],
+            "Q": [ 13 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procdff$170": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "always_ff": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:75.5-128.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 57 ],
+            "Q": [ 14 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procdff$171": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000000010"
+          },
+          "attributes": {
+            "always_ff": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:75.5-128.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 58, 59 ],
+            "Q": [ 60, 61 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$100": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:52.21-52.30|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:52.17-59.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x" ],
+            "B": [ 62 ],
+            "S": [ 23 ],
+            "Y": [ 63 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$102": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x" ],
+            "B": [ 63 ],
+            "S": [ 64 ],
+            "Y": [ 65 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$103_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "0", "1" ],
+            "Y": [ 64 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$106": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:52.21-52.30|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:52.17-59.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0" ],
+            "B": [ 66 ],
+            "S": [ 23 ],
+            "Y": [ 67 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$108": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x" ],
+            "B": [ 67 ],
+            "S": [ 68 ],
+            "Y": [ 69 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$109_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "0", "1" ],
+            "Y": [ 68 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$112": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:52.21-52.30|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:52.17-59.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0" ],
+            "B": [ 65 ],
+            "S": [ 23 ],
+            "Y": [ 70 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$114": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x" ],
+            "B": [ 70 ],
+            "S": [ 71 ],
+            "Y": [ 72 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$115_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "0", "1" ],
+            "Y": [ 71 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$118": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:52.21-52.30|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:52.17-59.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0" ],
+            "B": [ "1" ],
+            "S": [ 23 ],
+            "Y": [ 73 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$120": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x" ],
+            "B": [ 73 ],
+            "S": [ 74 ],
+            "Y": [ 75 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$121_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "0", "1" ],
+            "Y": [ 74 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$125": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:45.21-45.30|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:45.17-48.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0" ],
+            "B": [ "1" ],
+            "S": [ 23 ],
+            "Y": [ 76 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$127": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x" ],
+            "B": [ 76 ],
+            "S": [ 77 ],
+            "Y": [ 78 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$128_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "0" ],
+            "Y": [ 77 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$132": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:45.21-45.30|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:45.17-48.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0" ],
+            "B": [ "1" ],
+            "S": [ 23 ],
+            "Y": [ 79 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$134": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x" ],
+            "B": [ 79 ],
+            "S": [ 80 ],
+            "Y": [ 81 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$135_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "0" ],
+            "Y": [ 80 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$136": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000100",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x" ],
+            "B": [ "0", "0", "0", 4 ],
+            "S": [ 82, 83, 84, 85 ],
+            "Y": [ 86 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$137_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "1" ],
+            "Y": [ 82 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$138_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "0", "1" ],
+            "Y": [ 83 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$139_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "0" ],
+            "Y": [ 84 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$140_CMP0": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "Y": [ 85 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$141": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000100",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x" ],
+            "B": [ "0", "0", 78, "1" ],
+            "S": [ 87, 88, 89, 90 ],
+            "Y": [ 51 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$142_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "1" ],
+            "Y": [ 87 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$143_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "0", "1" ],
+            "Y": [ 88 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$144_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "0" ],
+            "Y": [ 89 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$145_CMP0": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "Y": [ 90 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$146": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000100",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x" ],
+            "B": [ 91, 75, 81, "1" ],
+            "S": [ 92, 93, 94, 95 ],
+            "Y": [ 28 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$147_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "1" ],
+            "Y": [ 92 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$148_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "0", "1" ],
+            "Y": [ 93 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$149_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "0" ],
+            "Y": [ 94 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$150_CMP0": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "Y": [ 95 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$151": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000100",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x" ],
+            "B": [ "0", 69, "0", "0" ],
+            "S": [ 96, 97, 98, 99 ],
+            "Y": [ 100 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$152_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "1" ],
+            "Y": [ 96 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$153_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "0", "1" ],
+            "Y": [ 97 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$154_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "0" ],
+            "Y": [ 98 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$155_CMP0": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "Y": [ 99 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$156": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000100",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x" ],
+            "B": [ "0", 72, "0", "0" ],
+            "S": [ 101, 102, 103, 104 ],
+            "Y": [ 46 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$157_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "1" ],
+            "Y": [ 101 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$158_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "0", "1" ],
+            "Y": [ 102 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$159_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "0" ],
+            "Y": [ 103 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$160_CMP0": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "Y": [ 104 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$33": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:97.25-119.32"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "1" ],
+            "B": [ "0" ],
+            "S": [ 105 ],
+            "Y": [ 106 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$34_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:97.25-119.32"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "1" ],
+            "Y": [ 105 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$35": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:96.25-96.34|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:96.21-120.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "1" ],
+            "B": [ 106 ],
+            "S": [ 23 ],
+            "Y": [ 107 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$37": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000010",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:81.13-126.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x" ],
+            "B": [ 107, 108 ],
+            "S": [ 109, 110 ],
+            "Y": [ 111 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$38_ANY": {
+          "hide_name": 1,
+          "type": "$reduce_or",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:81.13-126.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 112, 113, 114 ],
+            "Y": [ 109 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$38_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:81.13-126.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "0" ],
+            "Y": [ 112 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$38_CMP1": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:81.13-126.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "0", "1" ],
+            "Y": [ 113 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$38_CMP2": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:81.13-126.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "1" ],
+            "Y": [ 114 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$39": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:86.25-86.33|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:86.21-90.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0" ],
+            "B": [ "1" ],
+            "S": [ 4 ],
+            "Y": [ 108 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$41_CMP0": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:81.13-126.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "Y": [ 110 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$43": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:76.13-76.19|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:76.9-127.12"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0" ],
+            "B": [ 111 ],
+            "S": [ 3 ],
+            "Y": [ 57 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$48": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000010"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:104.37-104.45|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:104.33-109.36"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "1" ],
+            "S": [ 41 ],
+            "Y": [ 115, 116 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$50": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000010",
+            "WIDTH": "00000000000000000000000000000010"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:97.25-119.32"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0", "0" ],
+            "B": [ 115, 116, "0", "1" ],
+            "S": [ 117, 118 ],
+            "Y": [ 119, 120 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$51_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:97.25-119.32"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "0", "1" ],
+            "Y": [ 117 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$52_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:97.25-119.32"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "0" ],
+            "Y": [ 118 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$53": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000010"
+          },
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:96.25-96.34|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:96.21-120.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ 119, 120 ],
+            "S": [ 23 ],
+            "Y": [ 121, 122 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$55": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000010",
+            "WIDTH": "00000000000000000000000000000010"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:81.13-126.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ 121, 122, 123, 124 ],
+            "S": [ 125, 126 ],
+            "Y": [ 127, 128 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$56_ANY": {
+          "hide_name": 1,
+          "type": "$reduce_or",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:81.13-126.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 129, 130, 131 ],
+            "Y": [ 125 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$56_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:81.13-126.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "0" ],
+            "Y": [ 129 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$56_CMP1": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:81.13-126.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "0", "1" ],
+            "Y": [ 130 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$56_CMP2": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:81.13-126.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "1" ],
+            "Y": [ 131 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$57": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000010"
+          },
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:86.25-86.33|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:86.21-90.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "0" ],
+            "S": [ 4 ],
+            "Y": [ 123, 124 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$59_CMP0": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:81.13-126.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "Y": [ 126 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$61": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000010"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:76.13-76.19|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:76.9-127.12"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0", "0" ],
+            "B": [ 127, 128 ],
+            "S": [ 3 ],
+            "Y": [ 58, 59 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$64": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000011",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:97.25-119.32"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 13 ],
+            "B": [ "1", 132, 133 ],
+            "S": [ 134, 135, 136 ],
+            "Y": [ 137 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$65_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:97.25-119.32"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "1" ],
+            "Y": [ 134 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$67": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:104.37-104.45|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:104.33-109.36"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 138 ],
+            "B": [ "1" ],
+            "S": [ 41 ],
+            "Y": [ 132 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$69_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:97.25-119.32"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "0", "1" ],
+            "Y": [ 135 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$70_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:97.25-119.32"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "0" ],
+            "Y": [ 136 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$71": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:96.25-96.34|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:96.21-120.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 13 ],
+            "B": [ 137 ],
+            "S": [ 23 ],
+            "Y": [ 139 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$73": {
+          "hide_name": 1,
+          "type": "$pmux",
+          "parameters": {
+            "S_WIDTH": "00000000000000000000000000000010",
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:81.13-126.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 13 ],
+            "B": [ 139, 140 ],
+            "S": [ 141, 142 ],
+            "Y": [ 143 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$74_ANY": {
+          "hide_name": 1,
+          "type": "$reduce_or",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000011",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:81.13-126.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 144, 145, 146 ],
+            "Y": [ 141 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$74_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:81.13-126.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "0" ],
+            "Y": [ 144 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$74_CMP1": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:81.13-126.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "0", "1" ],
+            "Y": [ 145 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$74_CMP2": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:81.13-126.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "1" ],
+            "Y": [ 146 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$75": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:86.25-86.33|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:86.21-90.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "1" ],
+            "B": [ "0" ],
+            "S": [ 4 ],
+            "Y": [ 140 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$77_CMP0": {
+          "hide_name": 1,
+          "type": "$logic_not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:81.13-126.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "Y": [ 142 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$79": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:76.13-76.19|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:76.9-127.12"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "1" ],
+            "B": [ 143 ],
+            "S": [ 3 ],
+            "Y": [ 56 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$82": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:63.21-63.30|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:63.17-64.39"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0" ],
+            "B": [ "1" ],
+            "S": [ 23 ],
+            "Y": [ 147 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$84": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x" ],
+            "B": [ 147 ],
+            "S": [ 148 ],
+            "Y": [ 91 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$85_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "1", "1" ],
+            "Y": [ 148 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$89": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:55.25-55.34|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:55.21-58.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "1" ],
+            "B": [ "0" ],
+            "S": [ 41 ],
+            "Y": [ 149 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$91": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:52.21-52.30|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:52.17-59.20"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x" ],
+            "B": [ 149 ],
+            "S": [ 23 ],
+            "Y": [ 150 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$93": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "x" ],
+            "B": [ 150 ],
+            "S": [ 151 ],
+            "Y": [ 66 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$94_CMP0": {
+          "hide_name": 1,
+          "type": "$eq",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000010",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000010",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:37.9-71.16"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 60, 61 ],
+            "B": [ "0", "1" ],
+            "Y": [ 151 ]
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$98": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:55.25-55.34|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:55.21-58.24"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "1" ],
+            "B": [ "0" ],
+            "S": [ 41 ],
+            "Y": [ 62 ]
+          }
+        },
+        "$flatten\\u_tx_shift_register.$procdff$168": {
+          "hide_name": 1,
+          "type": "$dff",
+          "parameters": {
+            "CLK_POLARITY": "1",
+            "WIDTH": "00000000000000000000000000001000"
+          },
+          "attributes": {
+            "always_ff": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_shift_register.sv:16.5-23.8"
+          },
+          "port_directions": {
+            "CLK": "input",
+            "D": "input",
+            "Q": "output"
+          },
+          "connections": {
+            "CLK": [ 2 ],
+            "D": [ 152, 153, 154, 155, 156, 157, 158, 159 ],
+            "Q": [ 133, 138, 160, 161, 162, 163, 164, 165 ]
+          }
+        },
+        "$flatten\\u_tx_shift_register.$procmux$24": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000001000"
+          },
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_shift_register.sv:21.18-21.26|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_shift_register.sv:21.14-22.49"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 133, 138, 160, 161, 162, 163, 164, 165 ],
+            "B": [ 138, 160, 161, 162, 163, 164, 165, "0" ],
+            "S": [ 100 ],
+            "Y": [ 166, 167, 168, 169, 170, 171, 172, 173 ]
+          }
+        },
+        "$flatten\\u_tx_shift_register.$procmux$27": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000001000"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_shift_register.sv:19.18-19.22|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_shift_register.sv:19.14-22.49"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 166, 167, 168, 169, 170, 171, 172, 173 ],
+            "B": [ 5, 6, 7, 8, 9, 10, 11, 12 ],
+            "S": [ 86 ],
+            "Y": [ 174, 175, 176, 177, 178, 179, 180, 181 ]
+          }
+        },
+        "$flatten\\u_tx_shift_register.$procmux$30": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000001000"
+          },
+          "attributes": {
+            "full_case": "00000000000000000000000000000001",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_shift_register.sv:17.13-17.19|/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_shift_register.sv:17.9-22.49"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "B": [ 174, 175, 176, 177, 178, 179, 180, 181 ],
+            "S": [ 3 ],
+            "Y": [ 152, 153, 154, 155, 156, 157, 158, 159 ]
+          }
+        }
+      },
+      "netnames": {
+        "$flatten\\u_baud_counter.$0\\baud_count[3:0]": {
+          "hide_name": 1,
+          "bits": [ 24, 25, 26, 27 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_baud_counter.sv:18.5-25.8"
+          }
+        },
+        "$flatten\\u_baud_counter.$add$/home/tuan/projects/uart-8n1-tx/rtl/uart_baud_counter.sv:24$15_Y": {
+          "hide_name": 1,
+          "bits": [ 19, 20, 21, 22 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_baud_counter.sv:24.27-24.44"
+          }
+        },
+        "$flatten\\u_baud_counter.$procmux$162_Y": {
+          "hide_name": 1,
+          "bits": [ 29, 30, 31, 32 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_bit_counter.$0\\bit_index[3:0]": {
+          "hide_name": 1,
+          "bits": [ 42, 43, 44, 45 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_bit_counter.sv:13.5-20.8"
+          }
+        },
+        "$flatten\\u_bit_counter.$add$/home/tuan/projects/uart-8n1-tx/rtl/uart_bit_counter.sv:19$10_Y": {
+          "hide_name": 1,
+          "bits": [ 37, 38, 39, 40 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_bit_counter.sv:19.26-19.42"
+          }
+        },
+        "$flatten\\u_bit_counter.$procmux$16_Y": {
+          "hide_name": 1,
+          "bits": [ 47, 48, 49, 50 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_bit_counter.$procmux$19_Y": {
+          "hide_name": 1,
+          "bits": [ 52, 53, 54, 55 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$0\\busy[0:0]": {
+          "hide_name": 1,
+          "bits": [ 57 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:75.5-128.8"
+          }
+        },
+        "$flatten\\u_tx_controller.$0\\state[1:0]": {
+          "hide_name": 1,
+          "bits": [ 58, 59 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:75.5-128.8"
+          }
+        },
+        "$flatten\\u_tx_controller.$0\\tx[0:0]": {
+          "hide_name": 1,
+          "bits": [ 56 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:75.5-128.8"
+          }
+        },
+        "$flatten\\u_tx_controller.$2\\baud_clear[0:0]": {
+          "hide_name": 1,
+          "bits": [ 81 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0"
+          }
+        },
+        "$flatten\\u_tx_controller.$2\\bit_clear[0:0]": {
+          "hide_name": 1,
+          "bits": [ 78 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0"
+          }
+        },
+        "$flatten\\u_tx_controller.$2\\bit_inc[0:0]": {
+          "hide_name": 1,
+          "bits": [ 72 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0"
+          }
+        },
+        "$flatten\\u_tx_controller.$2\\shift_en[0:0]": {
+          "hide_name": 1,
+          "bits": [ 69 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0"
+          }
+        },
+        "$flatten\\u_tx_controller.$3\\baud_clear[0:0]": {
+          "hide_name": 1,
+          "bits": [ 75 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0"
+          }
+        },
+        "$flatten\\u_tx_controller.$3\\bit_inc[0:0]": {
+          "hide_name": 1,
+          "bits": [ 65 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0"
+          }
+        },
+        "$flatten\\u_tx_controller.$3\\shift_en[0:0]": {
+          "hide_name": 1,
+          "bits": [ 66 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0"
+          }
+        },
+        "$flatten\\u_tx_controller.$4\\baud_clear[0:0]": {
+          "hide_name": 1,
+          "bits": [ 91 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0.0-0.0"
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$100_Y": {
+          "hide_name": 1,
+          "bits": [ 63 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$103_CMP": {
+          "hide_name": 1,
+          "bits": [ 64 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$106_Y": {
+          "hide_name": 1,
+          "bits": [ 67 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$109_CMP": {
+          "hide_name": 1,
+          "bits": [ 68 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$112_Y": {
+          "hide_name": 1,
+          "bits": [ 70 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$115_CMP": {
+          "hide_name": 1,
+          "bits": [ 71 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$118_Y": {
+          "hide_name": 1,
+          "bits": [ 73 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$121_CMP": {
+          "hide_name": 1,
+          "bits": [ 74 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$125_Y": {
+          "hide_name": 1,
+          "bits": [ 76 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$128_CMP": {
+          "hide_name": 1,
+          "bits": [ 77 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$132_Y": {
+          "hide_name": 1,
+          "bits": [ 79 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$135_CMP": {
+          "hide_name": 1,
+          "bits": [ 80 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$137_CMP": {
+          "hide_name": 1,
+          "bits": [ 82 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$138_CMP": {
+          "hide_name": 1,
+          "bits": [ 83 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$139_CMP": {
+          "hide_name": 1,
+          "bits": [ 84 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$140_CMP": {
+          "hide_name": 1,
+          "bits": [ 85 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$142_CMP": {
+          "hide_name": 1,
+          "bits": [ 87 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$143_CMP": {
+          "hide_name": 1,
+          "bits": [ 88 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$144_CMP": {
+          "hide_name": 1,
+          "bits": [ 89 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$145_CMP": {
+          "hide_name": 1,
+          "bits": [ 90 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$147_CMP": {
+          "hide_name": 1,
+          "bits": [ 92 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$148_CMP": {
+          "hide_name": 1,
+          "bits": [ 93 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$149_CMP": {
+          "hide_name": 1,
+          "bits": [ 94 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$150_CMP": {
+          "hide_name": 1,
+          "bits": [ 95 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$152_CMP": {
+          "hide_name": 1,
+          "bits": [ 96 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$153_CMP": {
+          "hide_name": 1,
+          "bits": [ 97 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$154_CMP": {
+          "hide_name": 1,
+          "bits": [ 98 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$155_CMP": {
+          "hide_name": 1,
+          "bits": [ 99 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$157_CMP": {
+          "hide_name": 1,
+          "bits": [ 101 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$158_CMP": {
+          "hide_name": 1,
+          "bits": [ 102 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$159_CMP": {
+          "hide_name": 1,
+          "bits": [ 103 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$160_CMP": {
+          "hide_name": 1,
+          "bits": [ 104 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$33_Y": {
+          "hide_name": 1,
+          "bits": [ 106 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$34_CMP": {
+          "hide_name": 1,
+          "bits": [ 105 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$35_Y": {
+          "hide_name": 1,
+          "bits": [ 107 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$37_Y": {
+          "hide_name": 1,
+          "bits": [ 111 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$38_CMP": {
+          "hide_name": 1,
+          "bits": [ 112, 113, 114 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$38_CTRL": {
+          "hide_name": 1,
+          "bits": [ 109 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$39_Y": {
+          "hide_name": 1,
+          "bits": [ 108 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$41_CMP": {
+          "hide_name": 1,
+          "bits": [ 110 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$48_Y": {
+          "hide_name": 1,
+          "bits": [ 115, 116 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$50_Y": {
+          "hide_name": 1,
+          "bits": [ 119, 120 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$51_CMP": {
+          "hide_name": 1,
+          "bits": [ 117 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$52_CMP": {
+          "hide_name": 1,
+          "bits": [ 118 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$53_Y": {
+          "hide_name": 1,
+          "bits": [ 121, 122 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$55_Y": {
+          "hide_name": 1,
+          "bits": [ 127, 128 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$56_CMP": {
+          "hide_name": 1,
+          "bits": [ 129, 130, 131 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$56_CTRL": {
+          "hide_name": 1,
+          "bits": [ 125 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$57_Y": {
+          "hide_name": 1,
+          "bits": [ 123, 124 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$59_CMP": {
+          "hide_name": 1,
+          "bits": [ 126 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$64_Y": {
+          "hide_name": 1,
+          "bits": [ 137 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$65_CMP": {
+          "hide_name": 1,
+          "bits": [ 134 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$67_Y": {
+          "hide_name": 1,
+          "bits": [ 132 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$69_CMP": {
+          "hide_name": 1,
+          "bits": [ 135 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$70_CMP": {
+          "hide_name": 1,
+          "bits": [ 136 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$71_Y": {
+          "hide_name": 1,
+          "bits": [ 139 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$73_Y": {
+          "hide_name": 1,
+          "bits": [ 143 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$74_CMP": {
+          "hide_name": 1,
+          "bits": [ 144, 145, 146 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$74_CTRL": {
+          "hide_name": 1,
+          "bits": [ 141 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$75_Y": {
+          "hide_name": 1,
+          "bits": [ 140 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$77_CMP": {
+          "hide_name": 1,
+          "bits": [ 142 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$82_Y": {
+          "hide_name": 1,
+          "bits": [ 147 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$85_CMP": {
+          "hide_name": 1,
+          "bits": [ 148 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$89_Y": {
+          "hide_name": 1,
+          "bits": [ 149 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$91_Y": {
+          "hide_name": 1,
+          "bits": [ 150 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$94_CMP": {
+          "hide_name": 1,
+          "bits": [ 151 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_controller.$procmux$98_Y": {
+          "hide_name": 1,
+          "bits": [ 62 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_shift_register.$0\\shift_reg[7:0]": {
+          "hide_name": 1,
+          "bits": [ 152, 153, 154, 155, 156, 157, 158, 159 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_shift_register.sv:16.5-23.8"
+          }
+        },
+        "$flatten\\u_tx_shift_register.$procmux$24_Y": {
+          "hide_name": 1,
+          "bits": [ 166, 167, 168, 169, 170, 171, 172, 173 ],
+          "attributes": {
+          }
+        },
+        "$flatten\\u_tx_shift_register.$procmux$27_Y": {
+          "hide_name": 1,
+          "bits": [ 174, 175, 176, 177, 178, 179, 180, 181 ],
+          "attributes": {
+          }
+        },
+        "baud_clear": {
+          "hide_name": 0,
+          "bits": [ 28 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_top.sv:14.11-14.21"
+          }
+        },
+        "baud_tick": {
+          "hide_name": 0,
+          "bits": [ 23 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_top.sv:13.11-13.20"
+          }
+        },
+        "bit_clear": {
+          "hide_name": 0,
+          "bits": [ 51 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_top.sv:16.11-16.20"
+          }
+        },
+        "bit_inc": {
+          "hide_name": 0,
+          "bits": [ 46 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_top.sv:17.11-17.18"
+          }
+        },
+        "bit_last": {
+          "hide_name": 0,
+          "bits": [ 41 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_top.sv:18.11-18.19"
+          }
+        },
+        "busy": {
+          "hide_name": 0,
+          "bits": [ 14 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_top.sv:9.24-9.28"
+          }
+        },
+        "clk": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_top.sv:4.24-4.27"
+          }
+        },
+        "data_in": {
+          "hide_name": 0,
+          "bits": [ 5, 6, 7, 8, 9, 10, 11, 12 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_top.sv:7.24-7.31"
+          }
+        },
+        "rst_n": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_top.sv:5.24-5.29"
+          }
+        },
+        "shift_en": {
+          "hide_name": 0,
+          "bits": [ 100 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_top.sv:21.11-21.19"
+          }
+        },
+        "shift_load": {
+          "hide_name": 0,
+          "bits": [ 86 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_top.sv:20.11-20.21"
+          }
+        },
+        "tx": {
+          "hide_name": 0,
+          "bits": [ 13 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_top.sv:8.24-8.26"
+          }
+        },
+        "u_baud_counter.baud_count": {
+          "hide_name": 0,
+          "bits": [ 15, 16, 17, 18 ],
+          "attributes": {
+            "hdlname": "u_baud_counter baud_count",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_baud_counter.sv:13.20-13.30"
+          }
+        },
+        "u_bit_counter.bit_index": {
+          "hide_name": 0,
+          "bits": [ 33, 34, 35, 36 ],
+          "attributes": {
+            "hdlname": "u_bit_counter bit_index",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_bit_counter.sv:9.17-9.26"
+          }
+        },
+        "u_tx_controller.state": {
+          "hide_name": 0,
+          "bits": [ 60, 61 ],
+          "attributes": {
+            "enum_type": "$enum0",
+            "enum_value_00": "\\IDLE",
+            "enum_value_01": "\\START",
+            "enum_value_10": "\\DATA",
+            "enum_value_11": "\\STOP",
+            "hdlname": "u_tx_controller state",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:27.13-27.18",
+            "wiretype": "\\state_t"
+          }
+        },
+        "u_tx_shift_register.shift_reg": {
+          "hide_name": 0,
+          "bits": [ 133, 138, 160, 161, 162, 163, 164, 165 ],
+          "attributes": {
+            "hdlname": "u_tx_shift_register shift_reg",
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_shift_register.sv:11.17-11.26"
+          }
+        },
+        "valid_in": {
+          "hide_name": 0,
+          "bits": [ 4 ],
+          "attributes": {
+            "src": "/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_top.sv:6.24-6.32"
+          }
+        }
+      }
+    }
+  }
+}

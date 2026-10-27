@@ -1,0 +1,67 @@
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /home/tuan/projects/uart-8n1-tx/flow/runs/RUN_2026-10-20_09-04-44/tmp/3a6586948e6c435da188cb264cbae1da.lib ",
+   "modules": {
+      "\\uart_tx_top": {
+         "num_wires":         84,
+         "num_wire_bits":     119,
+         "num_pub_wires":     13,
+         "num_pub_wire_bits": 36,
+         "num_ports":         6,
+         "num_port_bits":     13,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         98,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 18,
+            "$_AND_": 2,
+            "$_DFF_P_": 4,
+            "$_MUX_": 11,
+            "$_NAND_": 5,
+            "$_NOR_": 4,
+            "$_NOT_": 6,
+            "$_ORNOT_": 6,
+            "$_OR_": 18,
+            "$_SDFFE_PN0P_": 8,
+            "$_SDFFE_PN1P_": 1,
+            "$_SDFFE_PP0P_": 4,
+            "$_SDFF_PN0_": 1,
+            "$_SDFF_PP0_": 4,
+            "$_XNOR_": 1,
+            "$_XOR_": 5
+         }
+      }
+   },
+      "design": {
+         "num_wires":         84,
+         "num_wire_bits":     119,
+         "num_pub_wires":     13,
+         "num_pub_wire_bits": 36,
+         "num_ports":         6,
+         "num_port_bits":     13,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         98,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 18,
+            "$_AND_": 2,
+            "$_DFF_P_": 4,
+            "$_MUX_": 11,
+            "$_NAND_": 5,
+            "$_NOR_": 4,
+            "$_NOT_": 6,
+            "$_ORNOT_": 6,
+            "$_OR_": 18,
+            "$_SDFFE_PN0P_": 8,
+            "$_SDFFE_PN1P_": 1,
+            "$_SDFFE_PP0P_": 4,
+            "$_SDFF_PN0_": 1,
+            "$_SDFF_PP0_": 4,
+            "$_XNOR_": 1,
+            "$_XOR_": 5
+         }
+      }
+}
+

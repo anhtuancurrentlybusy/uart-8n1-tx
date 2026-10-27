@@ -1,0 +1,7 @@
+
+19. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\uart_tx_controller.\baud_clear' from process `\uart_tx_controller.$proc$/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0$1'.
+No latch inferred for signal `\uart_tx_controller.\bit_clear' from process `\uart_tx_controller.$proc$/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0$1'.
+No latch inferred for signal `\uart_tx_controller.\bit_inc' from process `\uart_tx_controller.$proc$/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0$1'.
+No latch inferred for signal `\uart_tx_controller.\shift_load' from process `\uart_tx_controller.$proc$/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0$1'.
+No latch inferred for signal `\uart_tx_controller.\shift_en' from process `\uart_tx_controller.$proc$/home/tuan/projects/uart-8n1-tx/rtl/uart_tx_controller.sv:0$1'.

@@ -1,0 +1,4 @@
+- cell: uart_tx_top
+  inout: []
+  input: []
+  output: []
